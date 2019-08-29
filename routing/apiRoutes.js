@@ -1,40 +1,34 @@
+var friends = require("../app/data/friends");
 
-app.get("/api/characters", function(req, res) {
-    return res.json(characters);
-  });
-  
-  app.get("/api/delete", function(req, res) {
-    return res.json(characters);
-  });
-  
-  // Displays a single character, or returns false
-  app.get("/api/characters/:character", function(req, res) {
-    var chosen = req.params.character;
-  
-    console.log(chosen);
-  
-    for (var i = 0; i < characters.length; i++) {
-      if (chosen === characters[i].routeName) {
-        return res.json(characters[i]);
-      }
-    }
-  
-    return res.json(false);
+module.exports = function (app) {
+  app.get("/api/friends", function (req, res) {
+    res.json(friends)
   });
 
-  // Create New Characters - takes in JSON input
-app.post("/api/characters", function(req, res) {
-    // req.body hosts is equal to the JSON post sent from the user
-    // This works because of our body parsing middleware
-    var newCharacter = req.body;
-  
-    // Using a RegEx Pattern to remove spaces from newCharacter
-    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html, regex is a way to parse through things and find a pattern
-    newCharacter.routeName = newCharacter.name.replace(/\s+/g, "").toLowerCase();
-  
-    console.log(newCharacter);
-  
-    characters.push(newCharacter);
-  
-    res.json(newCharacter);
-  });
+  app.post("/api/friends", function (req, res) {
+    var newFriend = req.body
+    console.log(newFriend);
+    
+    var optimalFriend = function () {
+        
+        var arrayTotalDiff = [];
+        
+        for (let i = 0; i < friends.length; i++) {
+          var arraydiff = {}
+          
+          var diff = Math.abs(parseInt(newFriend.scores[j]) - parseInt(friends[j].scores[j]));
+
+          
+
+        }
+
+      };
+     
+    optimalFriend();
+    // console.log(newFriend.scores);
+
+    res.json(true);
+    // console.log(friends);
+  })
+
+};

@@ -14,11 +14,13 @@ module.exports = function (app) {
     function loopFriends() {
 
       for (let i = 0; i < friends.length; i++) {
-        console.log("ran1" + i);
+        // console.log("ran1" + i);
         comparefriends(i);
         
       }
-      optimalFriend();
+      return optimalFriend();
+      
+      
 
     }
 
@@ -26,7 +28,7 @@ module.exports = function (app) {
 
       var diffSum = 0;
       for (let j = 0; j < newFriend.scores.length; j++) {
-        console.log(`ran ${j}`)
+        // console.log(`ran ${j}`)
         var diff = Math.abs(parseInt(newFriend.scores[j]) - parseInt(friends[i].scores[j]));
         diffSum += diff;
 
@@ -42,11 +44,12 @@ module.exports = function (app) {
       console.log(index);
       console.log(friends[index]);
       friends.push(newFriend);
-    }
+      return friends[index];
+    } 
 
-    loopFriends();
-    res.json(true);
-    // console.log(friends);
+    var friend = loopFriends();
+    res.json(friend);
+    
   })
 
 };
